@@ -11,10 +11,6 @@ const commentList = document.getElementById("list");
 const comment = document.getElementById("comment-input");
 const submit = document.getElementById("submit");
 let paused = false;
-
-// counting();
-
-//counting
 setInterval(() => {
   if (!paused) {
     counter.innerHTML++;
@@ -32,7 +28,6 @@ const togglePaused = () => {
     pause.innerHTML = "resume";
     console.log("paused");
   } else {
-    //enanble all buttons
     buttons.forEach((button) => {
       button.disabled = false;
     });
@@ -42,36 +37,22 @@ const togglePaused = () => {
   }
 };
 
-//reset counter
 function resetCounter() {
   counter.innerHTML = 0;
 }
 
-//add event listener to reset
 reset.addEventListener("click", resetCounter);
 
-//minus counter
 function minusCounter() {
   counter.innerHTML = parseInt(counter.innerHTML) - 1;
 }
-
-//add event listener to minus
 minus.addEventListener("click", minusCounter);
-
-//plus counter
 function plusCounter() {
   counter.innerHTML = parseInt(counter.innerHTML) + 1;
 }
-
-//add event listener to plus
 plus.addEventListener("click", plusCounter);
-
-//NOT WORKING CORRECTLY
-
-//likes counter comment
 let likeTimes = 0;
 function likeCounter() {
-  //create list of likes comment inside likes ul
   likeTimes = +1;
   let list = document.createElement("li");
   list.innerHTML =
@@ -79,21 +60,13 @@ function likeCounter() {
   likes[0].appendChild(list);
   console.log(likeTimes);
 }
-
-//add event listener to like
 like.addEventListener("click", likeCounter);
-
-//add event listener to pause or resume
 pause.addEventListener("click", togglePaused);
-
-//submit comment
-function submitComment() {
+function submitComment(event) {
   event.preventDefault();
   let list = document.createElement("p");
   list.innerHTML = comment.value;
   commentList.appendChild(list);
   comment.value = "";
 }
-
-//add event listener to submit
 submit.addEventListener("click", submitComment);
